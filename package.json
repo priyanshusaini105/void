@@ -1,0 +1,595 @@
+{
+  "name": "void",
+  "displayName": "void - AI Code Completion and Chat",
+  "description": "Locally hosted AI code completion plugin for vscode",
+  "version": "3.23.31",
+  "icon": "assets/icon.png",
+  "keywords": [
+    "code-inference",
+    "code-suggestion",
+    "copilot",
+    "localhost",
+    "no-leaks",
+    "private",
+    "void",
+    "ai",
+    "ollama",
+    "llama",
+    "development",
+    "extension",
+    "llama-code",
+    "snippets",
+    "chat",
+    "code-snippets",
+    "autocomplete",
+    "intellisense",
+    "llama-ai",
+    "vscode-extension"
+  ],
+  "repository": {
+    "url": "https://github.com/voiddotdev/void"
+  },
+  "license": "MIT",
+  "publisher": "rjmacarthy",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "bugs": {
+    "url": "https://github.com/voiddotdev/void/issues"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Debuggers",
+    "Formatters",
+    "Machine Learning",
+    "Education",
+    "Testing",
+    "Data Science",
+    "Extension Packs",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "author": {
+    "name": "rjmacarthy"
+  },
+  "main": "./out/index.js",
+  "browser": "./out/index.js",
+  "contributes": {
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorTextFocus",
+          "command": "void.explain"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "void.refactor"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "void.addTypes"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "void.addTests"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "void.generateDocs"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "void.addFileToContext"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "void.addSelectionToContext"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "void.openChat",
+          "group": "navigation@0",
+          "when": "view == void.sidebar && voidManageTemplates || view == void.sidebar && voidManageProviders || view == void.sidebar && voidConversationHistory || view == void.sidebar && voidReviewTab || view == void.sidebar && voidEmbeddingsTab || view == void.sidebar && voidSymmetryTab"
+        },
+        {
+          "command": "void.review",
+          "group": "navigation@1",
+          "when": "view == void.sidebar"
+        },
+        {
+          "command": "void.symmetry",
+          "group": "navigation@2",
+          "when": "view == void.sidebar"
+        },
+        {
+          "command": "void.manageProviders",
+          "group": "navigation@3",
+          "when": "view == void.sidebar"
+        },
+        {
+          "command": "void.manageTemplates",
+          "group": "navigation@4",
+          "when": "view == void.sidebar"
+        },
+        {
+          "command": "void.embeddings",
+          "when": "view == void.sidebar",
+          "group": "navigation@5",
+          "icon": "$(database)"
+        },
+        {
+          "command": "void.conversationHistory",
+          "when": "view == void.sidebar",
+          "group": "navigation@6"
+        },
+        {
+          "command": "void.openPanelChat",
+          "when": "view == void.sidebar",
+          "group": "navigation@7"
+        },
+        {
+          "command": "void.newConversation",
+          "when": "view == void.sidebar",
+          "group": "navigation@8"
+        },
+        {
+          "command": "void.settings",
+          "when": "view == void.sidebar",
+          "group": "navigation@9"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "void.explain",
+        "title": "Twinny - Explain"
+      },
+      {
+        "command": "void.refactor",
+        "title": "Twinny - Refactor"
+      },
+      {
+        "command": "void.addTypes",
+        "title": "Twinny - Add types"
+      },
+      {
+        "command": "void.addTests",
+        "title": "Twinny - Write tests"
+      },
+      {
+        "command": "void.generateDocs",
+        "title": "Twinny - Generate docs"
+      },
+      {
+        "command": "void.enable",
+        "shortTitle": "Enable void",
+        "title": "Enable void"
+      },
+      {
+        "command": "void.stopGeneration",
+        "title": "Stop generation"
+      },
+      {
+        "command": "void.disable",
+        "title": "Disable void",
+        "shortTitle": "Disable void"
+      },
+      {
+        "command": "void.sidebar.focus",
+        "shortTitle": "Enable void sidebar",
+        "title": "Enable void sidebar"
+      },
+      {
+        "command": "void.settings",
+        "shortTitle": "void settings",
+        "title": "Open void settings",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "void.review",
+        "shortTitle": "void code reviewer",
+        "title": "Code reviewer",
+        "icon": "$(git-pull-request)"
+      },
+      {
+        "command": "void.symmetry",
+        "shortTitle": "void symmetry network",
+        "title": "Symmetry network settings",
+        "icon": "$(mirror-public)"
+      },
+      {
+        "command": "void.conversationHistory",
+        "shortTitle": "void conversation history",
+        "title": "Open void conversation history",
+        "icon": "$(history)"
+      },
+      {
+        "command": "void.openPanelChat",
+        "shortTitle": "Open void panel chat",
+        "title": "Open void panel chat",
+        "icon": "$(screen-full)"
+      },
+      {
+        "command": "void.newConversation",
+        "shortTitle": "New chat",
+        "title": "Start a new chat",
+        "icon": "$(plus)"
+      },
+      {
+        "command": "void.templates",
+        "shortTitle": "Edit void templates",
+        "title": "Edit void templates",
+        "icon": "$(pencil)"
+      },
+      {
+        "command": "void.manageTemplates",
+        "shortTitle": "Manage void templates",
+        "title": "Manage void templates",
+        "icon": "$(book)"
+      },
+      {
+        "command": "void.manageProviders",
+        "shortTitle": "Manage void providers",
+        "title": "Manage void providers",
+        "icon": "$(robot)"
+      },
+      {
+        "command": "void.openChat",
+        "shortTitle": "Back to chat view",
+        "title": "Back to chat view",
+        "icon": "$(arrow-left)"
+      },
+      {
+        "command": "void.embeddings",
+        "shortTitle": "void embeddings",
+        "title": "Embedding options",
+        "icon": "$(database)"
+      },
+      {
+        "command": "void.addFileToContext",
+        "title": "Twinny - Add file to context"
+      },
+      {
+        "command": "void.addSelectionToContext",
+        "title": "Twinny: Add Selection to Context"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "Alt+\\",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "CTRL+SHIFT+/",
+        "command": "void.stopGeneration",
+        "when": "voidGeneratingText"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "void-sidebar-view",
+          "title": "void",
+          "icon": "assets/void.svg"
+        }
+      ]
+    },
+    "views": {
+      "void-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "void.sidebar",
+          "name": "void",
+          "icon": "assets/void.svg",
+          "contextualTitle": "void"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "void",
+      "properties": {
+        "void.enabled": {
+          "order": 0,
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Toggles the Twinny extension on or off. When `true`, Twinny is active and ready to provide completions."
+        },
+        "void.enabledLanguages": {
+          "order": 1,
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "default": {
+            "*": true
+          },
+          "markdownDescription": "Specifies which languages to enable completions with Twinny for. Use `*` as the default for all languages. Example:\n```json\n{\n  \"*\": true,\n  \"python\": true,\n  \"javascript\": false\n}\n```"
+        },
+        "void.locale": {
+          "order": 2,
+          "type": "string",
+          "enum": [
+            "en",
+            "zh-CN",
+            "zh-HK",
+            "de",
+            "es",
+            "es-CL",
+            "ja",
+            "fr",
+            "it",
+            "pt",
+            "ru",
+            "ko",
+            "nl"
+          ],
+          "enumDescriptions": [
+            "English",
+            "Chinese (Simplified)",
+            "Chinese (Hong Kong)",
+            "German",
+            "Spanish",
+            "Spanish (Colombia)",
+            "Japanese",
+            "French",
+            "Italian",
+            "Portuguese",
+            "Russian",
+            "Korean",
+            "Dutch"
+          ],
+          "default": "en",
+          "markdownDescription": "Sets the locale for Twinny. The default is `en` (English)."
+        },
+        "void.autoSuggestEnabled": {
+          "order": 3,
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "When `true`, Twinny will automatically suggest completions. You can still manually trigger completions using the default shortcut (`Alt+\\`)."
+        },
+        "void.contextLength": {
+          "order": 4,
+          "type": "number",
+          "default": 100,
+          "markdownDescription": "Specifies how many lines of context (before and after the current line) to include in Fill-in-Middle (FIM) prompts. A higher number provides more context but may slow down completions.",
+          "required": true
+        },
+        "void.debounceWait": {
+          "order": 5,
+          "type": "number",
+          "default": 300,
+          "markdownDescription": "Sets the delay (in milliseconds) before triggering the next completion. This helps reduce API calls and improve performance.",
+          "required": true
+        },
+        "void.temperature": {
+          "order": 6,
+          "type": "number",
+          "default": 0.2,
+          "markdownDescription": "Controls the randomness of the model's output. Lower values (e.g., 0.2) produce more focused and deterministic outputs, while higher values (e.g., 0.8) lead to more diverse and creative completions.",
+          "required": true
+        },
+        "void.multilineCompletionsEnabled": {
+          "order": 7,
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "When `true`, Twinny will attempt to generate multi-line completions. This is an experimental feature and may not work perfectly in all scenarios."
+        },
+        "void.maxLines": {
+          "dependencies": {
+            "void.multilineCompletionsEnabled": true
+          },
+          "order": 8,
+          "type": "number",
+          "default": 40,
+          "markdownDescription": "Sets the maximum number of lines for multi-line completions. Only applies when `void.multilineCompletionsEnabled` is `true`."
+        },
+        "void.fileContextEnabled": {
+          "order": 9,
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "When `true`, Twinny will scan neighboring documents to provide more context for completions. This is an experimental feature and may impact performance."
+        },
+        "void.completionCacheEnabled": {
+          "order": 10,
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Enables caching of Fill-in-Middle (FIM) completions for identical prompts. This can significantly improve performance but may use more memory."
+        },
+        "void.numPredictChat": {
+          "order": 11,
+          "type": "number",
+          "default": 512,
+          "markdownDescription": "Sets the maximum number of tokens to generate for chat completions. Higher values allow for longer completions but may increase response time.",
+          "required": true
+        },
+        "void.numPredictFim": {
+          "order": 12,
+          "type": "number",
+          "default": 512,
+          "markdownDescription": "Defines the maximum number of tokens for Fill-in-Middle (FIM) completions. Use `-1` for no limit. Twinny will attempt to stop at logical line breaks regardless of this setting.",
+          "required": true
+        },
+        "void.enableSubsequentCompletions": {
+          "order": 13,
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "When `true`, Twinny will continue to make completion requests to the API after the previous completion was accepted. This can provide a more fluid completion experience."
+        },
+        "void.embeddingIgnoredGlobs": {
+          "order": 14,
+          "type": "array",
+          "default": [],
+          "markdownDescription": "Specifies file patterns to ignore when calculating embeddings, such as `**/*.md`, `**/node_modules/**`."
+        },
+        "void.ollamaHostname": {
+          "order": 15,
+          "type": "string",
+          "default": "0.0.0.0",
+          "markdownDescription": "Specifies the hostname for the Ollama API. Use `0.0.0.0` for localhost or provide a specific IP address or domain name.",
+          "required": true
+        },
+        "void.ollamaApiPort": {
+          "order": 16,
+          "type": [
+            "number",
+            "null"
+          ],
+          "default": 11434,
+          "markdownDescription": "Sets the port number for the Ollama API. The default is `11434`, but you can change it if your Ollama instance uses a different port.",
+          "required": false
+        },
+        "void.keepAlive": {
+          "order": 17,
+          "type": "string",
+          "default": "5m",
+          "markdownDescription": "Sets the duration to keep models in memory for Ollama API. Use formats like `5m` for 5 minutes or `1h` for 1 hour. Set to `-1` to keep models in memory indefinitely."
+        },
+        "void.ollamaUseTls": {
+          "order": 18,
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "When `true`, Twinny will use TLS encryption for connections to the Ollama API. Ensure your Ollama instance is configured for TLS before enabling this option."
+        },
+        "void.enableLogging": {
+          "order": 19,
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Activates debug logging for Twinny. When `true`, Twinny will output detailed logs, which can be helpful for troubleshooting."
+        },
+        "void.symmetryServerKey": {
+          "order": 20,
+          "type": "string",
+          "markdownDescription": "Sets the symmetry master server key. Default value is provided for void's Symmetry server.",
+          "default": "4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435"
+        },
+        "void.githubToken": {
+          "order": 21,
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Your personal GitHub access token. This is used for fetching data from GitHub repositories. Keep this token secure and do not share it."
+        },
+        "void.providerStorageLocation": {
+          "order": 22,
+          "type": "string",
+          "enum": [
+            "globalState",
+            "file"
+          ],
+          "default": "globalState",
+          "markdownDescription": "Specifies where to store Twinny provider configurations. 'globalState' uses VS Code's global state (persists per domain, may be lost if domain changes frequently). 'file' stores configurations in a file within the extension's global storage directory (more resilient to domain changes)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build-tests": "tsc -p . --outDir out",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "package": "node scripts/build.mjs",
+    "pretest": "npm run build-tests && npm run build && npm run lint",
+    "test": "node ./out/test/runTest.js",
+    "vscode:package": "npm exec vsce package",
+    "vscode:prepublish": "npm run package",
+    "vscode:publish": "npm exec vsce publish",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "watch": "node scripts/build.mjs --watch"
+  },
+  "devDependencies": {
+    "@hyrious/esbuild-plugin-commonjs": "^0.2.4",
+    "@types/async-lock": "^1.4.2",
+    "@types/cheerio": "^0.22.35",
+    "@types/js-yaml": "^4.0.9",
+    "@types/minimatch": "^5.1.2",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^16.18.68",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "@types/string_score": "^0.1.31",
+    "@types/uuid": "^9.0.8",
+    "@types/vscode": "^1.70.0",
+    "@types/ws": "^8.5.12",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.10",
+    "@vscode/vsce": "^3.1.1",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^6.8.1",
+    "esbuild": "^0.21.5",
+    "esbuild-plugin-copy": "^2.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "jest": "^29.7.0",
+    "mocha": "^10.3.0",
+    "rimraf": "^5.0.5",
+    "style-loader": "^3.3.3",
+    "tree-sitter-wasms": "^0.1.7",
+    "ts-loader": "^9.5.1",
+    "typescript": "^4.7.4",
+    "web-tree-sitter": "^0.22.1"
+  },
+  "dependencies": {
+    "@lancedb/lancedb": "^0.19.1",
+    "@tiptap/extension-image": "^2.11.7",
+    "@tiptap/extension-mention": "^2.5.9",
+    "@tiptap/extension-placeholder": "^2.5.9",
+    "@tiptap/pm": "^2.5.9",
+    "@tiptap/react": "^2.5.9",
+    "@tiptap/starter-kit": "^2.5.9",
+    "@tiptap/suggestion": "^2.5.9",
+    "@types/react": "^18.2.46",
+    "@vscode/codicons": "^0.0.35",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "@wasm-tool/wasm-pack-plugin": "^1.7.0",
+    "async-lock": "^1.4.1",
+    "b4a": "^1.6.6",
+    "cheerio": "^1.0.0",
+    "classnames": "^2.5.1",
+    "dompurify": "^3.2.3",
+    "fastest-levenshtein": "^1.0.16",
+    "fluency.js": "^1.0.23",
+    "fuse.js": "^7.0.0",
+    "handlebars": "^4.7.8",
+    "handlebars-loader": "^1.7.3",
+    "hypercore-crypto": "^3.4.2",
+    "hyperswarm": "^4.7.15",
+    "i18next": "^23.16.5",
+    "i18next-http-backend": "^2.6.2",
+    "ignore": "^6.0.2",
+    "js-yaml": "^4.1.0",
+    "lucide-react": "^0.473.0",
+    "node-polyfill-webpack-plugin": "^3.0.0",
+    "onnxruntime-web": "^1.18.0",
+    "p-queue": "^8.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^15.1.1",
+    "react-markdown": "^9.0.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-virtuoso": "^4.12.3",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0",
+    "string_score": "^0.1.22",
+    "symmetry-core": "^1.0.45",
+    "tippy.js": "^6.3.7",
+    "tiptap-markdown": "^0.8.10",
+    "toxe": "^1.1.0",
+    "uuid": "^9.0.1",
+    "ws": "^8.18.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ]
+}
