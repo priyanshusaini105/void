@@ -16,7 +16,7 @@ Void is a free AI extension for Visual Studio Code, offering powerful AI-assiste
 
 ## 🚀 Getting Started
 
-For a quick start guide, visit our [documentation](https://twinnydotdev.github.io/twinny-docs/).
+For a quick start guide, visit our documentation.
 
 ## Main Features
 
@@ -52,18 +52,15 @@ A decentralized P2P network for sharing AI inference resources, enhancing the ca
 
 ## Known Issues
 
-For troubleshooting and known issues, please check our GitHub [issues page](https://github.com/rjmacarthy/twinny/issues).
+For troubleshooting and known issues, please check our GitHub [issues page](https://github.com/priyanshusaini105/void/issues).
 
 ## Contributing
 
-We welcome contributions! Please contact us via [Twitter](https://x.com/twinnydotdev), describe your proposed changes in an issue, and submit a pull request. Void is MIT licensed.
+We welcome contributions! Please contact us, describe your proposed changes in an issue, and submit a pull request. Void is MIT licensed.
 
 ## Support Void
 
 Void is free and open-source. If you'd like to support the project, donations are appreciated:
-Bitcoin: `1PVavNkMmBmUz8nRYdnVXiTgXrAyaxfehj`
-
-For updates, follow us on Twitter: https://x.com/twinnydotdev
 
 ## Disclaimer
 
