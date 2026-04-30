@@ -1,0 +1,67 @@
+# Void
+
+Void is a free AI extension for Visual Studio Code, offering powerful AI-assisted coding features.
+
+## Supported Providers
+
+- localhost OpenAI/Ollama Compatible API (default)
+- [OpenAI](https://openai.com)
+- [Anthropic](https://www.anthropic.com)
+- [OpenRouter](https://openrouter.ai)
+- [Deepseek](https://www.deepseek.com)
+- [Cohere](https://www.cohere.ai)
+- [Mistral AI](https://mistral.ai)
+- [Perplexity](https://www.perplexity.ai)
+- [Groq](https://groq.com)
+
+## 🚀 Getting Started
+
+For a quick start guide, visit our documentation.
+
+## Main Features
+
+### Fill in the Middle Code Completion
+Void provides AI-powered real-time code suggestions to enhance your coding experience.
+
+### Chat with AI About Your Code
+Use the sidebar to discuss your code with AI, getting explanations, tests, refactoring suggestions, and more.
+
+### Additional Features
+- Online and offline operation
+- Customizable API endpoints
+- Preserved chat conversations
+- OpenAI API standard compliance
+- Single and multiline fill-in-the-middle completions
+- Customizable prompt templates
+- Git commit message generation
+- Easy installation via VS Code marketplace
+- Configurable settings (API provider, model, port, path)
+- Direct code solution acceptance
+- New document creation from code blocks
+- Side-by-side diff view
+- Full-screen chat mode
+- Code solution block copying
+- Workspace embeddings for context-aware assistance
+- Symmetry network integration for P2P AI inference
+
+### Workspace Embeddings
+Void uses workspace embeddings to provide context-aware AI assistance, improving the relevance of suggestions.
+
+### Symmetry Network
+A decentralized P2P network for sharing AI inference resources, enhancing the capabilities of Void.
+
+## Known Issues
+
+For troubleshooting and known issues, please check our GitHub [issues page](https://github.com/priyanshusaini105/void/issues).
+
+## Contributing
+
+We welcome contributions! Please contact us, describe your proposed changes in an issue, and submit a pull request. Void is MIT licensed.
+
+## Support Void
+
+Void is free and open-source. If you'd like to support the project, donations are appreciated:
+
+## Disclaimer
+
+Void is actively developed and provided "as is". Functionality may vary between updates.
